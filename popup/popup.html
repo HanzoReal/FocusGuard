@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusGuard</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>FocusGuard</h1>
+            <p class="subtitle">Stay focused, stay productive</p>
+        </header>
+        <!-- Timer Display -->
+        <div class="timer-section">
+            <div class="progress-ring">
+                <svg class="progress-ring-svg" width="120" height="120">
+                    <circle class="progress-ring-circle-bg" cx="60" cy="60" r="54"></circle>
+                    <circle class="progress-ring-circle" cx="60" cy="60" r="54" id="progressCircle"></circle>
+                </svg>
+                <div class="timer-display">
+                    <div class="time-text" id="timerDisplay">25:00</div>
+                </div>
+            </div>
+            <div class="session-type" id="sessionType">Focus Session</div>
+        </div>
+        <!-- Controls -->
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">Start</button>
+            <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+            <button id="resetBtn" class="btn btn-tertiary">Reset</button>
+        </div>
+        <!-- Timer Settings -->
+        <div class="timer-settings">
+            <h3>Timer Settings</h3>
+            <div class="settings-row">
+                <div class="setting-item">
+                    <label>Focus:</label>
+                    <div class="time-inputs">
+                        <div class="input-with-unit">
+                            <input type="number" id="focusHours" min="0" max="23" value="0">
+                            <span class="unit">h</span>
+                        </div>
+                        <div class="input-with-unit">
+                            <input type="number" id="focusMinutes" min="1" max="59" value="25">
+                            <span class="unit">m</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label>Break:</label>
+                    <div class="time-inputs">
+                        <div class="input-with-unit">
+                            <input type="number" id="breakHours" min="0" max="23" value="0">
+                            <span class="unit">h</span>
+                        </div>
+                        <div class="input-with-unit">
+                            <input type="number" id="breakMinutes" min="1" max="59" value="5">
+                            <span class="unit">m</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-label">Sessions Today:</span>
+                <span class="stat-value" id="sessionsToday">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Focus Time:</span>
+                <span class="stat-value" id="focusTime">0h 0m</span>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <button id="optionsBtn" class="btn btn-link">Settings</button>
+            <div class="sound-toggle">
+                <label class="toggle-label">
+                    <input type="checkbox" id="soundToggle">
+                    <span class="toggle-slider"></span>
+                    🔊
+                </label>
+            </div>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 

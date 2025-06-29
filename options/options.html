@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusGuard Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>FocusGuard Settings</h1>
+            <p class="subtitle">Customize your productivity experience</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Timer Settings -->
+            <section class="settings-section">
+                <h2>Timer Settings</h2>
+                <div class="setting-group">
+                    <label for="focusDuration">Focus Session Duration (minutes):</label>
+                    <input type="number" id="focusDuration" min="1" max="120" value="25">
+                </div>
+                
+                <div class="setting-group">
+                    <label for="breakDuration">Break Duration (minutes):</label>
+                    <input type="number" id="breakDuration" min="1" max="60" value="5">
+                </div>
+                
+                <div class="setting-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="soundEnabled">
+                        <span class="checkmark"></span>
+                        Enable sound notifications
+                    </label>
+                </div>
+            </section>
+
+            <!-- Blocked Sites -->
+            <section class="settings-section">
+                <h2>Blocked Sites</h2>
+                <p class="section-description">
+                    These sites will be blocked during focus sessions. Add or remove sites as needed.
+                </p>
+                
+                <div class="blocked-sites-container">
+                    <div class="add-site-form">
+                        <input type="text" id="newSiteInput" placeholder="Enter website (e.g., facebook.com)">
+                        <button id="addSiteBtn" class="btn btn-primary">Add Site</button>
+                    </div>
+                    
+                    <div class="sites-list" id="sitesList">
+                        <!-- Sites will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Statistics -->
+            <section class="settings-section">
+                <h2>Statistics</h2>
+                
+                <div class="stats-display">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalSessions">0</div>
+                        <div class="stat-label">Total Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalFocusTime">0h 0m</div>
+                        <div class="stat-label">Total Focus Time</div>
+                    </div>
+                </div>
+                
+                <div class="stats-actions">
+                    <button id="resetStatsBtn" class="btn btn-warning">Reset Statistics</button>
+                </div>
+            </section>
+
+            <!-- Data Management -->
+            <section class="settings-section">
+                <h2>Settings Management</h2>
+                <p class="section-description">
+                    Export your settings for backup, or import from a previously saved file.
+                </p>
+                
+                <div class="data-actions">
+                    <button id="exportDataBtn" class="btn btn-secondary">Export Settings</button>
+                    <button id="importDataBtn" class="btn btn-secondary">Import Settings</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="settings-section">
+                <h2>About</h2>
+                <div class="about-content">
+                    <p><strong>FocusGuard v1.0.0</strong></p>
+                    <p>A Pomodoro timer with smart distraction blocking to help you stay focused and productive.</p>
+                    
+                    <div class="feature-list">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Customizable Pomodoro timer</li>
+                            <li>Smart website blocking during focus sessions</li>
+                            <li>Session statistics and progress tracking</li>
+                            <li>Chrome notifications and sound alerts</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="save-status" id="saveStatus">
+                <span class="status-text">All changes saved automatically</span>
+            </div>
+            <div class="footer-actions">
+                <button id="resetAllBtn" class="btn btn-danger">Reset All Settings</button>
+                <button id="closeBtn" class="btn btn-primary">Close</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html> 
