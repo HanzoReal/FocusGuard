@@ -52,7 +52,7 @@ class PomodoroTimer {
         // Timer duration inputs - Focus
         const updateFocusDuration = () => {
             const hours = parseInt(this.focusHoursInput.value) || 0;
-            const minutes = parseInt(this.focusMinutesInput.value) || 1;
+            const minutes = parseInt(this.focusMinutesInput.value) || (hours > 0 ? 0 : 1);
             if (this.isValidTime(hours, minutes)) {
                 this.focusDuration = (hours * 3600) + (minutes * 60);
                 if (!this.isRunning && this.isFocusSession) {
@@ -65,10 +65,22 @@ class PomodoroTimer {
         
         this.focusHoursInput.addEventListener('change', () => {
             this.validateAndFixInput(this.focusHoursInput, 0, 23, 0);
+            // Update minutes input min attribute based on hours value
+            const hours = parseInt(this.focusHoursInput.value) || 0;
+            this.focusMinutesInput.min = hours > 0 ? "0" : "1";
+            
+            // If hours changed to 0 and minutes is 0, set minutes to 1
+            const currentMinutes = parseInt(this.focusMinutesInput.value) || 0;
+            if (hours === 0 && currentMinutes === 0) {
+                this.focusMinutesInput.value = "01";
+            }
+            
             updateFocusDuration();
         });
         this.focusMinutesInput.addEventListener('change', () => {
-            this.validateAndFixInput(this.focusMinutesInput, 1, 59, 1);
+            const hours = parseInt(this.focusHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.validateAndFixInput(this.focusMinutesInput, minMinutes, 59, minMinutes);
             updateFocusDuration();
         });
         this.focusHoursInput.addEventListener('blur', () => {
@@ -76,22 +88,36 @@ class PomodoroTimer {
             updateFocusDuration();
         });
         this.focusMinutesInput.addEventListener('blur', () => {
-            this.validateAndFixInput(this.focusMinutesInput, 1, 59, 1);
+            const hours = parseInt(this.focusHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.validateAndFixInput(this.focusMinutesInput, minMinutes, 59, minMinutes);
             updateFocusDuration();
         });
         this.focusHoursInput.addEventListener('input', () => {
             this.restrictInputRange(this.focusHoursInput, 0, 23);
+            // Update minutes input min attribute based on hours value
+            const hours = parseInt(this.focusHoursInput.value) || 0;
+            this.focusMinutesInput.min = hours > 0 ? "0" : "1";
+            
+            // If hours changed to 0 and minutes is 0, set minutes to 1
+            const currentMinutes = parseInt(this.focusMinutesInput.value) || 0;
+            if (hours === 0 && currentMinutes === 0) {
+                this.focusMinutesInput.value = "01";
+            }
+            
             if (!this.isRunning && this.isFocusSession) updateFocusDuration();
         });
         this.focusMinutesInput.addEventListener('input', () => {
-            this.restrictInputRange(this.focusMinutesInput, 1, 59);
+            const hours = parseInt(this.focusHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.restrictInputRange(this.focusMinutesInput, minMinutes, 59);
             if (!this.isRunning && this.isFocusSession) updateFocusDuration();
         });
         
         // Timer duration inputs - Break
         const updateBreakDuration = () => {
             const hours = parseInt(this.breakHoursInput.value) || 0;
-            const minutes = parseInt(this.breakMinutesInput.value) || 1;
+            const minutes = parseInt(this.breakMinutesInput.value) || (hours > 0 ? 0 : 1);
             if (this.isValidTime(hours, minutes)) {
                 this.breakDuration = (hours * 3600) + (minutes * 60);
                 if (!this.isRunning && !this.isFocusSession) {
@@ -104,10 +130,22 @@ class PomodoroTimer {
         
         this.breakHoursInput.addEventListener('change', () => {
             this.validateAndFixInput(this.breakHoursInput, 0, 23, 0);
+            // Update minutes input min attribute based on hours value
+            const hours = parseInt(this.breakHoursInput.value) || 0;
+            this.breakMinutesInput.min = hours > 0 ? "0" : "1";
+            
+            // If hours changed to 0 and minutes is 0, set minutes to 1
+            const currentMinutes = parseInt(this.breakMinutesInput.value) || 0;
+            if (hours === 0 && currentMinutes === 0) {
+                this.breakMinutesInput.value = "01";
+            }
+            
             updateBreakDuration();
         });
         this.breakMinutesInput.addEventListener('change', () => {
-            this.validateAndFixInput(this.breakMinutesInput, 1, 59, 1);
+            const hours = parseInt(this.breakHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.validateAndFixInput(this.breakMinutesInput, minMinutes, 59, minMinutes);
             updateBreakDuration();
         });
         this.breakHoursInput.addEventListener('blur', () => {
@@ -115,15 +153,29 @@ class PomodoroTimer {
             updateBreakDuration();
         });
         this.breakMinutesInput.addEventListener('blur', () => {
-            this.validateAndFixInput(this.breakMinutesInput, 1, 59, 1);
+            const hours = parseInt(this.breakHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.validateAndFixInput(this.breakMinutesInput, minMinutes, 59, minMinutes);
             updateBreakDuration();
         });
         this.breakHoursInput.addEventListener('input', () => {
             this.restrictInputRange(this.breakHoursInput, 0, 23);
+            // Update minutes input min attribute based on hours value
+            const hours = parseInt(this.breakHoursInput.value) || 0;
+            this.breakMinutesInput.min = hours > 0 ? "0" : "1";
+            
+            // If hours changed to 0 and minutes is 0, set minutes to 1
+            const currentMinutes = parseInt(this.breakMinutesInput.value) || 0;
+            if (hours === 0 && currentMinutes === 0) {
+                this.breakMinutesInput.value = "01";
+            }
+            
             if (!this.isRunning && !this.isFocusSession) updateBreakDuration();
         });
         this.breakMinutesInput.addEventListener('input', () => {
-            this.restrictInputRange(this.breakMinutesInput, 1, 59);
+            const hours = parseInt(this.breakHoursInput.value) || 0;
+            const minMinutes = hours > 0 ? 0 : 1;
+            this.restrictInputRange(this.breakMinutesInput, minMinutes, 59);
             if (!this.isRunning && !this.isFocusSession) updateBreakDuration();
         });
 
@@ -192,6 +244,12 @@ class PomodoroTimer {
             
             // Update timer duration inputs
             this.updateTimeInputs();
+            
+            // Set initial min attributes for minutes inputs based on hours
+            const focusHours = parseInt(this.focusHoursInput.value) || 0;
+            const breakHours = parseInt(this.breakHoursInput.value) || 0;
+            this.focusMinutesInput.min = focusHours > 0 ? "0" : "1";
+            this.breakMinutesInput.min = breakHours > 0 ? "0" : "1";
             
             // Handle running timer
             if (this.isRunning && result.endTime) {
@@ -540,21 +598,24 @@ class PomodoroTimer {
     }
 
     isValidTime(hours, minutes) {
-        return hours >= 0 && hours <= 23 && minutes >= 1 && minutes <= 59;
+        const minMinutes = hours > 0 ? 0 : 1; // Allow 0 minutes when hours are set
+        return hours >= 0 && hours <= 23 && minutes >= minMinutes && minutes <= 59;
     }
 
     updateTimeInputs() {
         // Update focus duration inputs
         const focusHours = Math.floor(this.focusDuration / 3600);
-        const focusMinutes = Math.max(1, Math.floor((this.focusDuration % 3600) / 60)); // Ensure minimum 1 minute
+        const focusMinutes = Math.floor((this.focusDuration % 3600) / 60);
+        const minFocusMinutes = focusHours > 0 ? 0 : 1; // Allow 0 minutes when hours are set
         this.focusHoursInput.value = focusHours.toString().padStart(2, '0');
-        this.focusMinutesInput.value = focusMinutes.toString().padStart(2, '0');
+        this.focusMinutesInput.value = Math.max(minFocusMinutes, focusMinutes).toString().padStart(2, '0');
 
         // Update break duration inputs  
         const breakHours = Math.floor(this.breakDuration / 3600);
-        const breakMinutes = Math.max(1, Math.floor((this.breakDuration % 3600) / 60)); // Ensure minimum 1 minute
+        const breakMinutes = Math.floor((this.breakDuration % 3600) / 60);
+        const minBreakMinutes = breakHours > 0 ? 0 : 1; // Allow 0 minutes when hours are set
         this.breakHoursInput.value = breakHours.toString().padStart(2, '0');
-        this.breakMinutesInput.value = breakMinutes.toString().padStart(2, '0');
+        this.breakMinutesInput.value = Math.max(minBreakMinutes, breakMinutes).toString().padStart(2, '0');
     }
 }
 
