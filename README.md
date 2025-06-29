@@ -1,99 +1,81 @@
-FocusGuard – Pomodoro + Distraction Blocker
-FocusGuard is a Chrome extension that helps you stay focused and productive by combining a Pomodoro timer with intelligent website blocking.
+# FocusGuard – Pomodoro + Distraction Blocker
 
-Features
-Pomodoro timer with customizable focus and break durations
+FocusGuard is a Chrome extension designed to help you stay focused and productive by combining a customizable Pomodoro timer with intelligent website blocking.
 
-Automatically blocks distracting websites during focus sessions
+## ✨ Features
 
-Displays motivational quotes when attempting to access blocked sites
+- Pomodoro timer with adjustable focus and break durations
+- Automatically blocks distracting websites during focus sessions
+- Displays motivational quotes and your daily goal when attempting to access blocked sites
+- Daily goal setting and optional task tracking
+- Configurable settings for timer duration, blocked websites, and notification sounds
+- Desktop notifications and sound alerts when sessions start and end
 
-Daily goal setting and optional task tracking
+## 🚀 Installation
 
-Configurable settings for timers, blocked websites, and sounds
+1. Download or clone this repository
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" in the top right corner
+4. Click "Load unpacked" and select the folder where the extension is located
 
-Sound and desktop notifications at the end of each session
+## 📖 Usage
 
-Installation
-Load the Extension in Developer Mode
-Download or clone this repository.
+1. Click the FocusGuard icon in the Chrome toolbar
+2. Set your daily goal and, optionally, your current task
+3. Start a focus session (default is 25 minutes)
+4. During focus time, blocked websites will display an overlay with your goal and a motivational quote
+5. When the session ends, a break session will start automatically
 
-Add the required assets:
+## ⚙️ Customization
 
-Place icon files in assets/icons/ (icon16.png, icon48.png, icon128.png)
+- Modify focus and break durations from the options page
+- Add or remove blocked websites to match your distractions
+- Enable or disable sound alerts
+- Export or import your settings and session history
 
-Place a notification sound file in assets/sounds/ (e.g., beep.mp3)
+## 🔧 How It Works
 
-Open Chrome and navigate to chrome://extensions/
+- During focus sessions, selected websites are blocked and display a motivational overlay
+- During break sessions, those sites become accessible
+- The extension automatically switches between focus and break cycles
+- Your timer continues to run in the background, even if the popup is closed
 
-Enable "Developer mode" (top right)
+## 🚫 Default Blocked Sites
 
-Click "Load unpacked" and select the root folder of the extension
+FocusGuard blocks the following sites by default during focus time:
 
-Usage
-Click the FocusGuard icon in the Chrome toolbar
+      -"youtube.com",
+      -"twitter.com",
+      -"instagram.com",
+      -"reddit.com",
+      -"facebook.com",
+      -"tiktok.com",
+      -"threads.net",
+      -"tumblr.com",
+      -"pinterest.com",
+      -"netflix.com",
+      -"hulu.com",
+      -"primevideo.com",
+      -"disneyplus.com",
+      -"crunchyroll.com",
+      -"twitch.tv",
+      -"dailymotion.com",
+      -"vimeo.com",
+      -"bbc.com",
+      -"steampowered.com",
+      -"epicgames.com",
+      -"roblox.com",
+      -"discord.com",
+      -"ign.com",
+      -"gamespot.com",
+      -"amazon.com"
 
-Set your daily goal and, optionally, your current task
+*This list can be customized in the extension's settings.*
 
-Start a focus session (default is 25 minutes)
+## 💡 Tips for Better Focus
 
-While the timer is running, blocked sites will display an overlay with your goal and a motivational quote
-
-When the focus session ends, a break session begins automatically
-
-Customization
-Change focus and break durations in the options page
-
-Add or remove blocked websites
-
-Enable or disable sound notifications
-
-Import or export your settings and usage data
-
-Technical Overview
-Built using the Chrome Extension Manifest V3
-
-Uses a service worker to keep the timer running in the background
-
-Stores user settings and progress using the Chrome Storage API
-
-Injects an overlay via content scripts on blocked sites
-
-Uses the Chrome Notifications API to alert the user when sessions end
-
-Default Blocked Sites
-The extension blocks the following sites by default during focus sessions:
-
-youtube.com
-
-twitter.com
-
-instagram.com
-
-reddit.com
-
-facebook.com
-
-tiktok.com
-
-You can edit this list at any time from the Settings page.
-
-How It Works
-During a focus session, blocked websites are inaccessible and display an overlay.
-
-During breaks, blocked sites are temporarily accessible.
-
-The extension automatically switches between focus and break sessions.
-
-Timer continues running even when the popup is closed, thanks to background logic.
-
-Suggestions for Effective Use
-Set a clear, motivating daily goal
-
-Break your work into specific, manageable tasks
-
-Use the break sessions to rest intentionally
-
-Customize your blocked site list to reflect your real distractions
-
-Review your usage data to track your focus habits over time
+- Set a clear, specific daily goal
+- Use task names to stay organized and intentional
+- Take your breaks seriously to reset and recharge
+- Tailor the blocked site list to fit your personal habits
+- Review your usage history to reflect on your progress
